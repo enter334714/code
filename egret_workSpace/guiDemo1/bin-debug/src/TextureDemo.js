@@ -9,32 +9,44 @@ var __extends = this.__extends || function (d, b) {
  */
 var TextureDemo = (function (_super) {
     __extends(TextureDemo, _super);
+    //  private imgs:egret.SpriteSheet;
+    // private loadOk:boolean;
     function TextureDemo() {
         _super.call(this);
+        this.loadIndex = 0;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddedHandler, this);
     }
     TextureDemo.prototype.onAddedHandler = function (e) {
         this.load();
         this.touchEnabled = true;
         this.touchChildren = true;
-        this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouch, this);
+        //  this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this)
     };
     TextureDemo.prototype.load = function () {
         egret.Profiler.getInstance().run();
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onGroupComp, this);
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/resource.json", "resource/");
+    };
+    TextureDemo.prototype.onConfigComplete = function (event) {
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onConfigComp, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.loadGroup("assets");
         RES.loadGroup("shareGroup");
     };
-    TextureDemo.prototype.onGroupComp = function (e) {
-        // this.imgs = RES.getRes("imgs");
-        //  this.loadOk = true;
-        var img = rect.Rect.produceRect("block1");
-        img.touchEnabled = true;
-        this.addChild(img);
+    TextureDemo.prototype.onConfigComp = function (e) {
+        if (e.groupName == "assets" || e.groupName == "shareGroup") {
+            this.loadIndex++;
+        }
+        console.log(this.loadIndex);
+        if (this.loadIndex == 2) {
+            this.gameWorld = new GameWorld();
+            this.gameWorld.init();
+            this.addChild(this.gameWorld);
+        }
     };
-    TextureDemo.prototype.onTouch = function (e) {
-        console.log(e.target);
+    TextureDemo.prototype.onResourceProgress = function (e) {
+        console.log(e.itemsLoaded, "/", e.itemsTotal);
     };
     return TextureDemo;
 })(egret.DisplayObjectContainer);

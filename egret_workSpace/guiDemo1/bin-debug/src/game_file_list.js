@@ -1,9 +1,11 @@
 var game_file_list = [
     "Rect.js",
+    "rect/Rect.js",
+    "EnterScene.js",
     "skins/simple/HScrollBarThumbSkin.js",
     "skins/simple/TreeDisclosureButtonSkin.js",
     "skins/simple/VScrollBarThumbSkin.js",
-    "rect/Rect.js",
+    "GameWorld.js",
     "skins/simple/CloseButtonSkin.js",
     "skins/simple/DropDownListItemRendererSkin.js",
     "skins/simple/DropDownListOpenButtonSkin.js",

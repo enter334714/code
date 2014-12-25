@@ -4,7 +4,7 @@
 class TextureDemo extends egret.DisplayObjectContainer
 {
   //  private imgs:egret.SpriteSheet;
-    private loadOk:boolean;
+   // private loadOk:boolean;
     constructor()
     {
         super();
@@ -16,29 +16,43 @@ class TextureDemo extends egret.DisplayObjectContainer
         this.load();
         this.touchEnabled = true;
         this.touchChildren = true;
-        this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this)
+      //  this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this)
     }
     private load():void
     {
         egret.Profiler.getInstance().run()
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onGroupComp,this);
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
         RES.loadConfig("resource/resource.json","resource/");
+
+    }
+
+    private onConfigComplete(event:RES.ResourceEvent):void{
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onConfigComp,this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
         RES.loadGroup("assets");
         RES.loadGroup("shareGroup");
     }
 
-    private onGroupComp(e:RES.ResourceEvent):void
+    private gameWorld:GameWorld;
+    private loadIndex:number=0;
+    private onConfigComp(e:RES.ResourceEvent):void
     {
-       // this.imgs = RES.getRes("imgs");
-      //  this.loadOk = true;
-
-        var img:rect.Rect = rect.Rect.produceRect("block1");
-        img.touchEnabled = true;
-        this.addChild(img);
+        if(e.groupName=="assets"  ||  e.groupName=="shareGroup")
+        {
+            this.loadIndex++;
+        }
+        console.log(this.loadIndex);
+        if(this.loadIndex==2)
+        {
+            this.gameWorld = new GameWorld();
+            this.gameWorld.init();
+            this.addChild(this.gameWorld);
+        }
+    }
+    private onResourceProgress(e:RES.ResourceEvent):void
+    {
+         console.log(e.itemsLoaded,"/",e.itemsTotal);
     }
 
-    private onTouch(e:egret.TouchEvent):void
-    {
-        console.log(e.target);
-    }
 }
