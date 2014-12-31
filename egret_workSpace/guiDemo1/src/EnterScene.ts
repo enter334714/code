@@ -40,39 +40,31 @@ class EnterScene extends egret.Sprite
         this.addChild(easyBtn);
         easyBtn.x = 140;
         easyBtn.y = 253;
-        easyBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchEasy,this)
+        easyBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchEasy,this);
 
         var hardBtn:egret.Bitmap = new egret.Bitmap(RES.getRes("hard"));
         hardBtn.touchEnabled = true;
         this.addChild(hardBtn);
         hardBtn.x = 140;
         hardBtn.y = 323;
-        hardBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchHard,this)
-        /// var tween:;
-        /* for(i=0;i<4;i++)
-         {
-         egret.Tween.get(this.blocks[i]).to({x:this.endPos[i][0],y:this.endPos[i][1],scaleX:this.endPos[i][2],scaleY:this.endPos[i][2]},500,egret.Ease.backInOut)
-         }*/
+        hardBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchHard,this);
 
-        //移动进来
-        //tween.to({x:240,y:85,scaleX:1.2,scaleY:1.2},500,egret.Ease.backOut);
-
-        //放大缩小
-
-
-        // tween.to({scaleX:1.2,scaleY:1.2,alpha:0,x:100,y:100},300).call(function(){this.parent.removeChild(img)});
-        //tween.to({y:50},600,egret.Ease.cubicOut);
-        //egret.Tween.get(this._arrow,{loop:!0}).to({y:30},600).to({y:0},600)
+        var t:egret.TextField = new egret.TextField();
+        t.textColor = 0;
+        t.text = "秋天：839982440（QQ）";
+        this.addChild(t);
+        t.x = 83;
+        t.y = 433;
     }
 
     private onTouchEasy(e:egret.TouchEvent):void
     {
-        console.log(e.target)
+        this.dispatchEventWith("startGame1");
     }
 
     private onTouchHard(e:egret.TouchEvent):void
     {
-        console.log(e.target)
+        this.dispatchEventWith("startGame2");
     }
 
     public  play():void
@@ -87,7 +79,7 @@ class EnterScene extends egret.Sprite
             block.y = this.startPos[i][1];
         }
         egret.Tween.get(this.blocks[0]).to({x:90,y:92},500,egret.Ease.backInOut);
-        egret.Tween.get(this.blocks[1]).to({x:163,y:75,scaleX:1.4,scaleY:1.4},300,egret.Ease.backInOut);
+        egret.Tween.get(this.blocks[1]).to({x:163,y:75,scaleX:1.3,scaleY:1.3},300,egret.Ease.backInOut);
         egret.Tween.get(this.blocks[2]).to({x:243,y:85,scaleX:1.2,scaleY:1.2},500,egret.Ease.backInOut);
         egret.Tween.get(this.blocks[3]).to({x:313,y:90},500,egret.Ease.backInOut).call(this.startTimer,this)
 
@@ -95,14 +87,19 @@ class EnterScene extends egret.Sprite
     }
     public startTimer():void
     {
-        console.log("thisTimer:",this.timer);
         this.timer.reset();
         this.timer.start();
-        console.log("定时器启动")
     }
+    private targetIndex:number=-1;
     private playAnimation():void
     {
-        var block:rect.Rect = this.blocks[Math.random()*4^0];
+        var index:number = Math.random()*4^0;
+        if(this.targetIndex==index)
+        {
+            return;
+        }
+        this.targetIndex = index;
+        var block:rect.Rect = this.blocks[index];
         var scaX:number = block.scaleX;
         var scaY:number = block.scaleY;
         egret.Tween.get(block).to({scaleX:scaX*1.2,scaleY:1.2*scaY},500,egret.Ease.backIn).to({scaleX:scaX,scaleY:scaY},500,egret.Ease.backOut)
@@ -110,11 +107,18 @@ class EnterScene extends egret.Sprite
 
     public _setVisible(value:boolean):void
     {
+        if(this.visible==value)
+            return;
         super._setVisible(value)
         if(value==false)
         {
             this.timer.stop();
             //////////////this.timer.start();
+        }
+        else
+        {
+            this.startTimer();
+            this.play();
         }
     }
 }

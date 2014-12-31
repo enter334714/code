@@ -1,7 +1,8 @@
 var game_file_list = [
-    "Rect.js",
     "rect/Rect.js",
     "EnterScene.js",
+    "GameScene.js",
+    "NumContainer.js",
     "skins/simple/HScrollBarThumbSkin.js",
     "skins/simple/TreeDisclosureButtonSkin.js",
     "skins/simple/VScrollBarThumbSkin.js",

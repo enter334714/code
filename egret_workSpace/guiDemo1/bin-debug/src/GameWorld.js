@@ -9,29 +9,49 @@ var __extends = this.__extends || function (d, b) {
  */
 var GameWorld = (function (_super) {
     __extends(GameWorld, _super);
+    //public static imgs:egret.SpriteSheet;
     function GameWorld() {
         _super.call(this);
         this.initBg();
+        this.touchEnabled = true;
+        //  this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTab,this);
     }
+    GameWorld.prototype.onTab = function (e) {
+        var num = Math.random() * 1000000 ^ 0;
+        this.numContainer.num = num;
+        // console.log(num);
+    };
     GameWorld.prototype.initBg = function () {
         var bg = new egret.Bitmap(RES.getRes("bg"));
         this.addChild(bg);
     };
     GameWorld.prototype.init = function () {
+        // GameWorld.imgs = RES.getRes("imgs");
         this.enterScene = new EnterScene();
         this.addChild(this.enterScene);
-        /// var tween:;
-        /* for(i=0;i<4;i++)
-         {
-             egret.Tween.get(this.blocks[i]).to({x:this.endPos[i][0],y:this.endPos[i][1],scaleX:this.endPos[i][2],scaleY:this.endPos[i][2]},500,egret.Ease.backInOut)
-         }*/
-        //移动进来
-        //tween.to({x:240,y:85,scaleX:1.2,scaleY:1.2},500,egret.Ease.backOut);
-        //放大缩小
-        //tween.to({scaleX:1.2*1,scaleY:1.2*1},500,egret.Ease.backIn).to({scaleX:1,scaleY:1},500,egret.Ease.backOut)
-        // tween.to({scaleX:1.2,scaleY:1.2,alpha:0,x:100,y:100},300).call(function(){this.parent.removeChild(img)});
-        //tween.to({y:50},600,egret.Ease.cubicOut);
-        //egret.Tween.get(this._arrow,{loop:!0}).to({y:30},600).to({y:0},600)
+        this.enterScene.addEventListener("startGame1", this.startGame1, this);
+        this.enterScene.addEventListener("startGame2", this.startGame2, this);
+        this.gameScene = new GameScene();
+        this.gameScene.visible = false;
+        this.gameScene.addEventListener("returnSence", this.onReturn, this);
+        this.addChild(this.gameScene);
+        // this.numContainer = new NumContainer();
+        //this.addChild(this.numContainer);
+        // this.numContainer.num = 13435465;
+    };
+    GameWorld.prototype.startGame2 = function (e) {
+        console.log("startGame2");
+    };
+    GameWorld.prototype.startGame1 = function (e) {
+        console.log("startGame1_j");
+        this.enterScene.visible = false;
+        this.gameScene.visible = true;
+    };
+    GameWorld.prototype.onReturn = function (e) {
+        console.log("returnScene_j");
+        this.enterScene.visible = true;
+        this.gameScene.visible = false;
+        this.enterScene.visible = true;
     };
     return GameWorld;
 })(egret.Sprite);

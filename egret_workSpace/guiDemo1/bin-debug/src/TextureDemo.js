@@ -44,6 +44,10 @@ var TextureDemo = (function (_super) {
             this.gameWorld.init();
             this.addChild(this.gameWorld);
         }
+        //this.add
+        /* var bm:egret.Bitmap = new egret.Bitmap();
+         bm.texture = RES.getRes("g2");
+         this.addChild(bm);*/
     };
     TextureDemo.prototype.onResourceProgress = function (e) {
         console.log(e.itemsLoaded, "/", e.itemsTotal);

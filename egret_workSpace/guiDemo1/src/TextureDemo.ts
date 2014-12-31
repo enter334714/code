@@ -49,6 +49,12 @@ class TextureDemo extends egret.DisplayObjectContainer
             this.gameWorld.init();
             this.addChild(this.gameWorld);
         }
+
+
+        //this.add
+       /* var bm:egret.Bitmap = new egret.Bitmap();
+        bm.texture = RES.getRes("g2");
+        this.addChild(bm);*/
     }
     private onResourceProgress(e:RES.ResourceEvent):void
     {

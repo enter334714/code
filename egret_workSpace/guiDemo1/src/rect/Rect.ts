@@ -7,7 +7,6 @@ module rect
     export class Rect extends egret.Bitmap
     {
         private static cacheRect:Object = {};
-        private static imgs:egret.SpriteSheet;
         public static produceRect(textureName:string):rect.Rect
         {
             if(rect.Rect.cacheRect[textureName]==null)
@@ -18,11 +17,7 @@ module rect
                 re = dict.pop();
             else
             {
-                if(rect.Rect.imgs==null)
-                {
-                    rect.Rect.imgs = RES.getRes("imgs");
-                }
-                var texture:egret.Texture = rect.Rect.imgs.getTexture(textureName);
+                var texture:egret.Texture =  RES.getRes(textureName);
                 re = new rect.Rect(texture);
             }
             re. textureName = textureName;

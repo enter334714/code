@@ -23,10 +23,7 @@ var rect;
             if (dict.length >= 1)
                 re = dict.pop();
             else {
-                if (rect.Rect.imgs == null) {
-                    rect.Rect.imgs = RES.getRes("imgs");
-                }
-                var texture = rect.Rect.imgs.getTexture(textureName);
+                var texture = RES.getRes(textureName);
                 re = new rect.Rect(texture);
             }
             re.textureName = textureName;
