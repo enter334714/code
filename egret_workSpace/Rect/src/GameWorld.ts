@@ -52,14 +52,16 @@ class GameWorld extends egret.Sprite
 
     private startGame2(e:egret.Event):void
     {
-        console.log("startGame2")
+        this.enterScene.visible = false;
+        this.gameScene.visible = true;
+        this.gameScene.dispatchEventWith("startGame2")
     }
     private startGame1(e:egret.Event):void
     {
         //console.log("startGame1_j");
         this.enterScene.visible = false;
         this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame")
+        this.gameScene.dispatchEventWith("startGame1")
     }
 
     private onReturn(e:egret.Event):void

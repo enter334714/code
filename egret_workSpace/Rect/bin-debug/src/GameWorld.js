@@ -40,13 +40,15 @@ var GameWorld = (function (_super) {
         // this.numContainer.num = 13435465;
     };
     GameWorld.prototype.startGame2 = function (e) {
-        console.log("startGame2");
+        this.enterScene.visible = false;
+        this.gameScene.visible = true;
+        this.gameScene.dispatchEventWith("startGame2");
     };
     GameWorld.prototype.startGame1 = function (e) {
         //console.log("startGame1_j");
         this.enterScene.visible = false;
         this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame");
+        this.gameScene.dispatchEventWith("startGame1");
     };
     GameWorld.prototype.onReturn = function (e) {
         console.log("returnScene_j");
