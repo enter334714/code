@@ -12,6 +12,8 @@ var GameScene = (function (_super) {
     function GameScene() {
         _super.call(this);
         this.hpSub = 1;
+        this.rectArr = [[]];
+        this.clickArr = [[]];
         this.initUi();
     }
     GameScene.prototype.initUi = function () {
@@ -80,25 +82,77 @@ var GameScene = (function (_super) {
         var j = 0;
         var re;
         GameScene.type = type;
-        console.log("GameScene.row[GameScene.type]", GameScene.row[GameScene.type], GameScene.column[GameScene.type]);
         for (i = 0; i < GameScene.column[GameScene.type]; i++) {
-            GameScene.rectArr[i] = [];
+            this.rectArr[i] = [];
+            this.clickArr[i] = [];
             for (j = 0; j < GameScene.row[GameScene.type]; j++) {
-                re = rect.Rect.produceRect("block" + (Math.random() * 7 ^ 0));
-                GameScene.rectArr[i].push(re);
-                this.addChild(re);
-                re.y = 140 + j * (re.width * GameScene.scaleArr[GameScene.type] + 1);
+                re = this.getRect();
+                this.rectArr[i].push(re);
                 re.x = GameScene.beginPos[GameScene.type] + i * (re.height * GameScene.scaleArr[GameScene.type] + 1);
-                re.anchorOffsetX = re.width / 2;
-                re.anchorOffsetY = re.height / 2;
-                re.scaleX = 0.5;
-                re.scaleY = 0.5;
-                egret.Tween.get(re).to({ scaleX: GameScene.scaleArr[GameScene.type], scaleY: GameScene.scaleArr[GameScene.type] }, 200, egret.Ease.backOut);
+                re.y = 140 + j * (re.width * GameScene.scaleArr[GameScene.type] + 1);
+                this.addChild(re);
+                this.rectTween(re);
+                var cRect = this.createClickRect();
+                //cRect.name = i+j+"";
+                cRect.x = GameScene.beginPos[GameScene.type] + i * (re.height * GameScene.scaleArr[GameScene.type] + 1);
+                cRect.y = 140 + j * (re.width * GameScene.scaleArr[GameScene.type] + 1);
+                cRect.name = i + "" + j;
+                cRect.alpha = 0;
+                this.clickArr[i].push(cRect);
+                cRect.anchorOffsetX = 40;
+                cRect.anchorOffsetY = 40;
+                cRect.touchEnabled = true;
+                cRect.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouch, this);
+                this.addChild(cRect);
             }
         }
         console.log("gameSceneNumChildren:", this.numChildren);
-        // var len:number = GameScene.rectArr.length;
-        //  for(i=0;i<)
+    };
+    GameScene.prototype.onTouch = function (e) {
+        var index = e.target.name;
+        var col = index.charAt(0);
+        var row = index.charAt(1);
+        var re = this.rectArr[col][row];
+        this.rectArr[col].splice(row, 1);
+        // this.rectArr[col].push(this.getRect());
+        re.parent.removeChild(re);
+        this.move(col, row, 1);
+    };
+    GameScene.prototype.move = function (col, row, index) {
+        var arr = this.rectArr[col];
+        var len = arr.length == 0 ? 0 : arr.length - 1;
+        var i = len;
+        var re;
+        for (i; i >= 0; i--) {
+            var re = arr[i];
+            egret.Tween.get(arr[i]).to({ y: 140 + (GameScene.row[GameScene.type] - (len - i) - 1) * (re.width * GameScene.scaleArr[GameScene.type] + 1) }, 100);
+        }
+        console.log(col, row);
+        var pRe = this.getRect();
+        arr.unshift(pRe);
+        pRe.x = GameScene.beginPos[GameScene.type] + col * (re.height * GameScene.scaleArr[GameScene.type] + 1);
+        pRe.y = 140 + 0 * (re.width * GameScene.scaleArr[GameScene.type] + 1);
+        this.addChild(pRe);
+        this.rectTween(pRe);
+    };
+    GameScene.prototype.getRect = function () {
+        var re = rect.Rect.produceRect("block" + (Math.random() * 7 ^ 0));
+        re.anchorOffsetX = re.width / 2;
+        re.anchorOffsetY = re.height / 2;
+        re.scaleX = 0.5;
+        re.scaleY = 0.5;
+        return re;
+    };
+    GameScene.prototype.rectTween = function (re) {
+        egret.Tween.get(re).to({ scaleX: GameScene.scaleArr[GameScene.type], scaleY: GameScene.scaleArr[GameScene.type] }, 300, egret.Ease.backOut);
+    };
+    GameScene.prototype.createClickRect = function () {
+        var cRect = new egret.Sprite();
+        cRect.graphics.beginFill(0xff0000);
+        cRect.graphics.drawRoundRect(0, 0, 80, 80, 5, 5);
+        cRect.width = cRect.height = 80;
+        cRect.graphics.endFill();
+        return cRect;
     };
     GameScene.prototype.startHpTimer = function () {
         this.hpTimer.reset();
@@ -122,10 +176,10 @@ var GameScene = (function (_super) {
         var re;
         for (i; i < GameScene.column[GameScene.type]; i++) {
             for (j = 0; j < GameScene.row[GameScene.type]; j++) {
-                re = GameScene.rectArr[i][j];
+                re = this.rectArr[i][j];
                 if (!rect)
                     return;
-                console.log("rect:", i, j, GameScene.row);
+                //  console.log("rect:",i,j,GameScene.row);
                 if (re.parent) {
                     re.parent.removeChild(re);
                 }
@@ -133,13 +187,14 @@ var GameScene = (function (_super) {
                 re = null;
             }
         }
+        this.rectArr = [[]];
+        this.clickArr = [[]];
         this.dispatchEventWith("returnSence");
     };
     GameScene.column = [5, 6];
     GameScene.row = [7, 8];
     GameScene.beginPos = [75, 55];
     GameScene.scaleArr = [1, .9];
-    GameScene.rectArr = [[]];
     GameScene.type = 0;
     return GameScene;
 })(egret.DisplayObjectContainer);

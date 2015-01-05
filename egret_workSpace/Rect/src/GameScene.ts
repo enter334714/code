@@ -60,7 +60,6 @@ class GameScene extends egret.DisplayObjectContainer
         this.addEventListener("startGame2",this.startGame2,this)
         this.addEventListener("stopGame",this.stopGame,this);
     }
-
     private startGame1(e:egret.Event):void
     {
         console.log("游戏准备1");
@@ -95,7 +94,8 @@ class GameScene extends egret.DisplayObjectContainer
     private static row:number[] = [7,8];
     private static beginPos:number[]=[75,55];
     private static scaleArr:number[]=[1,.9];
-    private static rectArr:rect.Rect[][] = [[]];
+    private rectArr:rect.Rect[][] = [[]];
+    private clickArr:egret.Sprite[][]=[[]];
     private static type:number=0;
     private createRect(type:number=0):void
     {
@@ -103,28 +103,93 @@ class GameScene extends egret.DisplayObjectContainer
         var j:number=0;
         var re:rect.Rect;
         GameScene.type = type;
-        console.log("GameScene.row[GameScene.type]",GameScene.row[GameScene.type],GameScene.column[GameScene.type])
+     //   console.log("GameScene.row[GameScene.type]",GameScene.row[GameScene.type],GameScene.column[GameScene.type])
         for(i=0;i<GameScene.column[GameScene.type];i++)
         {
-            GameScene.rectArr[i]=[];
+            this.rectArr[i]=[];
+            this.clickArr[i]=[];
             for(j=0;j<GameScene.row[GameScene.type];j++)
             {
-                re = rect.Rect.produceRect("block"+(Math.random()*7^0));
-                GameScene.rectArr[i].push(re);
-                this.addChild(re);
-                re.y = 140+j*(re.width*GameScene.scaleArr[GameScene.type]+1);
+                re = this.getRect();
+                this.rectArr[i].push(re);
                 re.x = GameScene.beginPos[GameScene.type]+i*(re.height*GameScene.scaleArr[GameScene.type]+1);
-                re.anchorOffsetX = re.width/2;
-                re.anchorOffsetY = re.height/2;
-                re.scaleX = 0.5;
-                re.scaleY = 0.5;
-                egret.Tween.get(re).to({scaleX:GameScene.scaleArr[GameScene.type],scaleY:GameScene.scaleArr[GameScene.type]},200,egret.Ease.backOut);
+                re.y = 140+j*(re.width*GameScene.scaleArr[GameScene.type]+1);
+                this.addChild(re);
+                this.rectTween(re);
+                var cRect:egret.Sprite = this.createClickRect();
+                //cRect.name = i+j+"";
+                cRect.x = GameScene.beginPos[GameScene.type]+i*(re.height*GameScene.scaleArr[GameScene.type]+1);
+                cRect.y = 140+j*(re.width*GameScene.scaleArr[GameScene.type]+1);
+                cRect.name = i+""+j;
+                cRect.alpha = 0;
+                this.clickArr[i].push(cRect);
+
+                cRect.anchorOffsetX = 40;
+                cRect.anchorOffsetY = 40;
+                cRect.touchEnabled = true;
+                cRect.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this);
+                this.addChild(cRect);
             }
         }
-        console.log("gameSceneNumChildren:",this.numChildren)
-       // var len:number = GameScene.rectArr.length;
-      //  for(i=0;i<)
+        console.log("gameSceneNumChildren:",this.numChildren);
+    }
 
+    private onTouch(e:egret.TouchEvent):void
+    {
+        var index:any = e.target.name;
+        var col:number = <number>index.charAt(0);
+        var row:number = <number>index.charAt(1);
+        var re:rect.Rect = this.rectArr[col][row];
+        this.rectArr[col].splice(row,1);
+       // this.rectArr[col].push(this.getRect());
+        re.parent.removeChild(re);
+        this.move(col,row,1);
+    }
+
+    private move(col:number,row:number,index:number):void
+    {
+        var arr:rect.Rect[]  = this.rectArr[col];
+        var len:number = arr.length==0?0:arr.length-1;
+        var i:number=len;
+        var re:rect.Rect;
+        for(i;i>=0;i--)
+        {
+            var re:rect.Rect = arr[i];
+            egret.Tween.get(arr[i]).to({y:140+(GameScene.row[GameScene.type]-(len-i)-1)*(re.width*GameScene.scaleArr[GameScene.type]+1)},100);
+
+        }
+        console.log(col,row);
+        var pRe:rect.Rect = this.getRect();
+        arr.unshift(pRe);
+        pRe.x = GameScene.beginPos[GameScene.type]+col*(re.height*GameScene.scaleArr[GameScene.type]+1);
+        pRe.y = 140+0*(re.width*GameScene.scaleArr[GameScene.type]+1);
+        this.addChild(pRe);
+        this.rectTween(pRe);
+    }
+
+
+    private getRect():rect.Rect
+    {
+        var re:rect.Rect = rect.Rect.produceRect("block"+(Math.random()*7^0));
+        re.anchorOffsetX = re.width/2;
+        re.anchorOffsetY = re.height/2;
+        re.scaleX = 0.5;
+        re.scaleY = 0.5;
+        return re;
+    }
+    private rectTween(re:rect.Rect):void
+    {
+        egret.Tween.get(re).to({scaleX:GameScene.scaleArr[GameScene.type],scaleY:GameScene.scaleArr[GameScene.type]},300,egret.Ease.backOut);
+    }
+
+    private createClickRect():egret.Sprite
+    {
+        var cRect:egret.Sprite = new egret.Sprite();
+        cRect.graphics.beginFill(0xff0000);
+        cRect.graphics.drawRoundRect(0,0,80,80,5,5);
+        cRect.width = cRect.height = 80;
+        cRect.graphics.endFill();
+        return cRect;
     }
 
 
@@ -163,10 +228,10 @@ class GameScene extends egret.DisplayObjectContainer
         {
             for(j=0;j<GameScene.row[GameScene.type];j++)
             {
-                re =  GameScene.rectArr[i][j];
+                re =  this.rectArr[i][j];
                 if(!rect)
                     return;
-                console.log("rect:",i,j,GameScene.row);
+              //  console.log("rect:",i,j,GameScene.row);
                 if(re.parent)
                 {
                     re.parent.removeChild(re)
@@ -175,6 +240,8 @@ class GameScene extends egret.DisplayObjectContainer
                 re = null;
             }
         }
+        this.rectArr = [[]];
+        this.clickArr = [[]];
         this.dispatchEventWith("returnSence");
     }
 }
