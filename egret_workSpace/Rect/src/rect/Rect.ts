@@ -20,7 +20,7 @@ module rect
                 var texture:egret.Texture =  RES.getRes(textureName);
                 re = new rect.Rect(texture);
             }
-            re. textureName = textureName;
+            re.textureName = textureName;
             return re;
         }
 

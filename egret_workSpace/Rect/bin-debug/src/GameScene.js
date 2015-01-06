@@ -14,6 +14,8 @@ var GameScene = (function (_super) {
         this.hpSub = 1;
         this.rectArr = [[]];
         this.clickArr = [[]];
+        this.waitCheckList = [];
+        this.isOKList = new Object();
         this.initUi();
     }
     GameScene.prototype.initUi = function () {
@@ -93,7 +95,7 @@ var GameScene = (function (_super) {
                 this.addChild(re);
                 this.rectTween(re);
                 var cRect = this.createClickRect();
-                //cRect.name = i+j+"";
+                // cRect.name = i+""+j;
                 cRect.x = GameScene.beginPos[GameScene.type] + i * (re.height * GameScene.scaleArr[GameScene.type] + 1);
                 cRect.y = 140 + j * (re.width * GameScene.scaleArr[GameScene.type] + 1);
                 cRect.name = i + "" + j;
@@ -110,15 +112,101 @@ var GameScene = (function (_super) {
     };
     GameScene.prototype.onTouch = function (e) {
         var index = e.target.name;
-        var col = index.charAt(0);
-        var row = index.charAt(1);
-        var re = this.rectArr[col][row];
-        this.rectArr[col].splice(row, 1);
-        // this.rectArr[col].push(this.getRect());
+        var col = parseInt(index.charAt(0));
+        var row = parseInt(index.charAt(1));
+        var re = this.clickArr[col][row];
+        this.waitCheckList.push(re);
+        this.checkWaitList();
+        /*this.rectArr[col].splice(row,1);
+       // this.rectArr[col].push(this.getRect());
         re.parent.removeChild(re);
-        this.move(col, row, 1);
+        var re1:rect.Rect = this.rectArr[col][row];
+        this.rectArr[col].splice(row,1);
+        // this.rectArr[col].push(this.getRect());
+        re1.parent.removeChild(re1);
+        this.move(col,row,2);*/
     };
-    GameScene.prototype.move = function (col, row, index) {
+    GameScene.prototype.checkWaitList = function () {
+        var i = 0;
+        var re;
+        for (i = 0; i < this.waitCheckList.length; i++) {
+            re = (this.waitCheckList[i]);
+            this.onCheck(re);
+        }
+        this.waitCheckList = [];
+        this.prepare();
+    };
+    GameScene.prototype.onCheck = function (re) {
+        var index = re.name;
+        var col = parseInt(index.charAt(0));
+        var row = parseInt(index.charAt(1));
+        //
+        // console.log(col,row);
+        var i;
+        var rect = this.rectArr[col][row];
+        this.onCheckRect(col, row, rect.textureName);
+        this.onCheckRect(col - 1, row, rect.textureName);
+        this.onCheckRect(col + 1, row, rect.textureName);
+        this.onCheckRect(col, row + 1, rect.textureName);
+        this.onCheckRect(col, row - 1, rect.textureName);
+    };
+    GameScene.prototype.onCheckRect = function (col, row, name) {
+        // console.log(col,row);
+        if (col < 0 || col >= this.rectArr.length || row < 0 || row >= this.rectArr[0].length) {
+            // console.log("col:",col)
+            return;
+        }
+        var rect = (this.rectArr[col][row]);
+        var sprite = this.clickArr[col][row];
+        var dicName = col + "" + row;
+        if (this.isOKList[dicName])
+            return;
+        if (rect.textureName == name) {
+            this.isOKList[dicName] = sprite;
+            this.waitCheckList.push(this.clickArr[col][row]);
+        }
+    };
+    GameScene.prototype.prepare = function () {
+        var t;
+        var deleteDic = new Object();
+        //  egret.Tween.get().to().call()
+        var col;
+        var row;
+        for (t in this.isOKList) {
+            col = t.charAt(0);
+            if (!deleteDic[col])
+                deleteDic[col] = [];
+            deleteDic[col].push(this.isOKList[t]);
+            delete this.isOKList[t];
+        }
+        var len;
+        var i;
+        var sprite;
+        for (t in deleteDic) {
+            len = deleteDic[t].length;
+            for (i = 0; i < len; i++) {
+                sprite = deleteDic[t][i];
+                row = sprite.name.charAt(1);
+                var re = this.rectArr[parseInt(t)][parseInt(row)];
+                re.parent.removeChild(re);
+                this.rectArr[parseInt(t)][parseInt(row)] = null;
+            }
+            for (i = 0; i < this.rectArr[t].length; i++) {
+                if (this.rectArr[t][i] == null) {
+                    this.rectArr[t].splice(i, 1);
+                    i--;
+                }
+            }
+            this.move(parseInt(t), len);
+            this.setScore(len);
+        }
+    };
+    /*
+    *
+    *@param addCounts 增加的个数
+    *
+    */
+    GameScene.prototype.move = function (col, addCounts) {
         var arr = this.rectArr[col];
         var len = arr.length == 0 ? 0 : arr.length - 1;
         var i = len;
@@ -127,13 +215,18 @@ var GameScene = (function (_super) {
             var re = arr[i];
             egret.Tween.get(arr[i]).to({ y: 140 + (GameScene.row[GameScene.type] - (len - i) - 1) * (re.width * GameScene.scaleArr[GameScene.type] + 1) }, 100);
         }
-        console.log(col, row);
-        var pRe = this.getRect();
-        arr.unshift(pRe);
-        pRe.x = GameScene.beginPos[GameScene.type] + col * (re.height * GameScene.scaleArr[GameScene.type] + 1);
-        pRe.y = 140 + 0 * (re.width * GameScene.scaleArr[GameScene.type] + 1);
-        this.addChild(pRe);
-        this.rectTween(pRe);
+        for (i = 0; i < addCounts; i++) {
+            var pRe = this.getRect();
+            arr.unshift(pRe);
+            pRe.x = GameScene.beginPos[GameScene.type] + col * (re.height * GameScene.scaleArr[GameScene.type] + 1);
+            pRe.y = 140 + i * (re.width * GameScene.scaleArr[GameScene.type] + 1);
+            this.addChild(pRe);
+            this.rectTween(pRe);
+        }
+        //console.log(this.numChildren)
+    };
+    GameScene.prototype.setScore = function (score) {
+        this.score.num = this.score.num + score * 100;
     };
     GameScene.prototype.getRect = function () {
         var re = rect.Rect.produceRect("block" + (Math.random() * 7 ^ 0));

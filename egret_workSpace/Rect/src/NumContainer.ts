@@ -5,6 +5,7 @@ class NumContainer extends egret.DisplayObjectContainer
 {
     private static _imgPool:egret.Bitmap[]=[];
     private numType:string;
+    private _num:number;
     constructor(type:string)
     {
         this.numType = type;
@@ -14,6 +15,7 @@ class NumContainer extends egret.DisplayObjectContainer
     public set num(num:number)
     {
         num = num^0;
+        this._num = num;
         var numStr:string = num.toString();
         var numLen:number = numStr.length;
         var index:number = numLen-this.numChildren; //正数为多余,要删除index个；负数为缺少，要增加index个；
@@ -40,6 +42,12 @@ class NumContainer extends egret.DisplayObjectContainer
         }
         this.reposition();
     }
+
+    public get num():number
+    {
+        return this._num;
+    }
+
     private reposition():void
     {
         var len:number = this.numChildren;

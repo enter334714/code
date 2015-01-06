@@ -117,7 +117,7 @@ class GameScene extends egret.DisplayObjectContainer
                 this.addChild(re);
                 this.rectTween(re);
                 var cRect:egret.Sprite = this.createClickRect();
-                //cRect.name = i+j+"";
+               // cRect.name = i+""+j;
                 cRect.x = GameScene.beginPos[GameScene.type]+i*(re.height*GameScene.scaleArr[GameScene.type]+1);
                 cRect.y = 140+j*(re.width*GameScene.scaleArr[GameScene.type]+1);
                 cRect.name = i+""+j;
@@ -137,16 +137,128 @@ class GameScene extends egret.DisplayObjectContainer
     private onTouch(e:egret.TouchEvent):void
     {
         var index:any = e.target.name;
-        var col:number = <number>index.charAt(0);
-        var row:number = <number>index.charAt(1);
-        var re:rect.Rect = this.rectArr[col][row];
-        this.rectArr[col].splice(row,1);
+        var col:number = parseInt(index.charAt(0));
+        var row:number = parseInt(index.charAt(1));
+        var re:egret.Sprite = this.clickArr[col][row];
+        this.waitCheckList.push(re)
+        this.checkWaitList();
+
+        /*this.rectArr[col].splice(row,1);
        // this.rectArr[col].push(this.getRect());
         re.parent.removeChild(re);
-        this.move(col,row,1);
+        var re1:rect.Rect = this.rectArr[col][row];
+        this.rectArr[col].splice(row,1);
+        // this.rectArr[col].push(this.getRect());
+        re1.parent.removeChild(re1);
+        this.move(col,row,2);*/
     }
 
-    private move(col:number,row:number,index:number):void
+    private waitCheckList:egret.Sprite[] =  [];
+    private isOKList:Object = new Object();
+
+    private checkWaitList():void
+    {
+        var i:number = 0;
+        var re:egret.Sprite;
+        for(i=0;i<this.waitCheckList.length;i++)
+        {
+            re = (this.waitCheckList[i]);
+            this.onCheck(re)
+        }
+        this.waitCheckList = [];
+        this.prepare();
+    }
+
+
+
+
+    private onCheck(re:egret.Sprite):void
+    {
+        var index:any = re.name;
+        var col:number = parseInt(index.charAt(0));
+        var row:number = parseInt(index.charAt(1));
+       //
+       // console.log(col,row);
+        var i:number;
+        var rect:rect.Rect = this.rectArr[col][row];
+        this.onCheckRect(col,row,rect.textureName);
+        this.onCheckRect(col-1,row,rect.textureName);
+        this.onCheckRect(col+1,row,rect.textureName);
+        this.onCheckRect(col,row+1,rect.textureName);
+        this.onCheckRect(col,row-1,rect.textureName);
+
+    }
+
+    private onCheckRect(col:number,row:number,name:String):void
+    {
+       // console.log(col,row);
+        if(col<0 || col>=this.rectArr.length || row<0 || row>=this.rectArr[0].length)
+        {
+           // console.log("col:",col)
+            return;
+        }
+        var rect:rect.Rect = (this.rectArr[col][row]);
+        var sprite:egret.Sprite = this.clickArr[col][row];
+        var dicName:any = col+""+row;
+
+        if(this.isOKList[dicName])
+            return;
+        if(rect.textureName==name)
+        {
+            this.isOKList[dicName] = sprite;
+            this.waitCheckList.push(this.clickArr[col][row]);
+        }
+    }
+
+    private prepare():void
+    {
+        var t:string;
+        var deleteDic:Object = new Object();
+        //  egret.Tween.get().to().call()
+        var col:string;
+        var row:string;
+        for (t in this.isOKList)
+        {
+            col = t.charAt(0);
+            if(!deleteDic[col])
+                deleteDic[col]=[];
+            deleteDic[col].push(this.isOKList[t]);
+            delete this.isOKList[t];
+        }
+        var len:number;
+        var i:number;
+        var sprite:egret.Sprite;
+        for(t in deleteDic)
+        {
+            len = deleteDic[t].length;
+            for(i=0;i<len;i++)
+            {
+                sprite = deleteDic[t][i];
+                row = sprite.name.charAt(1);
+                var re:rect.Rect = this.rectArr[parseInt(t)][parseInt(row)];
+                re.parent.removeChild(re);
+                this.rectArr[parseInt(t)][parseInt(row)] =null;
+            }
+            for(i=0;i<this.rectArr[t].length;i++)
+            {
+                if(this.rectArr[t][i]==null)
+                {
+                    this.rectArr[t].splice(i,1);
+                    i--;
+                }
+            }
+            this.move(parseInt(t),len);
+            this.setScore(len);
+
+        }
+
+    }
+    /*
+    *
+    *@param addCounts 增加的个数
+    *
+    */
+    private move(col:number,addCounts:number):void
     {
         var arr:rect.Rect[]  = this.rectArr[col];
         var len:number = arr.length==0?0:arr.length-1;
@@ -156,17 +268,24 @@ class GameScene extends egret.DisplayObjectContainer
         {
             var re:rect.Rect = arr[i];
             egret.Tween.get(arr[i]).to({y:140+(GameScene.row[GameScene.type]-(len-i)-1)*(re.width*GameScene.scaleArr[GameScene.type]+1)},100);
-
         }
-        console.log(col,row);
-        var pRe:rect.Rect = this.getRect();
-        arr.unshift(pRe);
-        pRe.x = GameScene.beginPos[GameScene.type]+col*(re.height*GameScene.scaleArr[GameScene.type]+1);
-        pRe.y = 140+0*(re.width*GameScene.scaleArr[GameScene.type]+1);
-        this.addChild(pRe);
-        this.rectTween(pRe);
+       // console.log(col,row);
+        for(i=0;i<addCounts;i++ )
+        {
+            var pRe:rect.Rect = this.getRect();
+            arr.unshift(pRe);
+            pRe.x = GameScene.beginPos[GameScene.type]+col*(re.height*GameScene.scaleArr[GameScene.type]+1);
+            pRe.y = 140+i*(re.width*GameScene.scaleArr[GameScene.type]+1);
+            this.addChild(pRe);
+            this.rectTween(pRe);
+        }
+        //console.log(this.numChildren)
     }
 
+    private setScore(score:number):void
+    {
+        this.score.num = this.score.num+score*100;
+    }
 
     private getRect():rect.Rect
     {

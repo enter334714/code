@@ -14,8 +14,12 @@ var NumContainer = (function (_super) {
         _super.call(this);
     }
     Object.defineProperty(NumContainer.prototype, "num", {
+        get: function () {
+            return this._num;
+        },
         set: function (num) {
             num = num ^ 0;
+            this._num = num;
             var numStr = num.toString();
             var numLen = numStr.length;
             var index = numLen - this.numChildren; //正数为多余,要删除index个；负数为缺少，要增加index个；
