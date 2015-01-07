@@ -14,8 +14,8 @@ class TextureDemo extends egret.DisplayObjectContainer
     private onAddedHandler(e:egret.Event):void
     {
         this.load();
-        this.touchEnabled = true;
-        this.touchChildren = true;
+       // this.touchEnabled = true;
+        //this.touchChildren = true;
       //  this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this)
     }
     private load():void
@@ -38,6 +38,8 @@ class TextureDemo extends egret.DisplayObjectContainer
     private loadIndex:number=0;
     private onConfigComp(e:RES.ResourceEvent):void
     {
+        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onConfigComp,this);
+        RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
         if(e.groupName=="assets"  ||  e.groupName=="shareGroup")
         {
             this.loadIndex++;

@@ -249,7 +249,7 @@ class GameScene extends egret.DisplayObjectContainer
             }
             this.move(parseInt(t),len);
             this.setScore(len);
-
+            egret.Ticker.getInstance().register
         }
 
     }

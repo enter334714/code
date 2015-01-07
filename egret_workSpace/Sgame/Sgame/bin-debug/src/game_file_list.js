@@ -1,0 +1,22 @@
+var game_file_list = [
+    "base/GameEvent.js",
+    "base/EventCenter.js",
+    "config/GameConfig.js",
+    "config/GameSettings.js",
+    "manager/BitmapNumber.js",
+    "gameAssets/Block.js",
+    "gameAssets/ProgressBar.js",
+    "manager/RulesManager.js",
+    "scene/GameScore.js",
+    "gameAssets/HotspotBitmap.js",
+    "manager/AchieveManager.js",
+    "manager/BlockManager.js",
+    "scene/ShareArrow.js",
+    "scene/TimeProgress.js",
+    "LoadingUI.js",
+    "scene/GameScene.js",
+    "scene/GameShare.js",
+    "scene/MainMenu.js",
+    "GameApp.js",
+    "base/ArrayUtils.js"
+];
