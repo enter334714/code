@@ -86,13 +86,13 @@ var GameScene = (function (_super) {
         this.addChild(this._scoreZone);
     };
     GameScene.prototype.onBlockClick = function (index) {
-        console.log("click");
         var blastBlock = RulesManager.i().getSameBlocksNearby(index);
         var score = RulesManager.i().getScoreByBlockCount(blastBlock.length);
         var scoreType = RulesManager.i().getScoreType(blastBlock.length);
         var pos = BlockManager.i().getPosByIndex(index);
         this.showScore(score, scoreType, pos.x, pos.y);
         AchieveManager.i().recordData(blastBlock.length, BlockManager.i().getBlockByIndex(blastBlock[0]).type);
+        console.log(blastBlock);
         BlockManager.i().blastBlocks(blastBlock);
         this._gameScore.addScore(blastBlock.length * score);
         this._timeProgress.changeTimeSpeed(RulesManager.i().getTimeSpeedChange(blastBlock.length));

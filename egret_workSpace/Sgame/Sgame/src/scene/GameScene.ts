@@ -112,13 +112,13 @@ class GameScene extends egret.Sprite
 
     private onBlockClick(index:number):void
     {
-        console.log("click");
         var blastBlock:number[] = RulesManager.i().getSameBlocksNearby(index);
         var score:number = RulesManager.i().getScoreByBlockCount(blastBlock.length);
         var scoreType:string = RulesManager.i().getScoreType(blastBlock.length);
         var pos:egret.Point = BlockManager.i().getPosByIndex(index);
         this.showScore(score, scoreType, pos.x, pos.y);
         AchieveManager.i().recordData(blastBlock.length, BlockManager.i().getBlockByIndex(blastBlock[0]).type);
+        console.log(blastBlock)
         BlockManager.i().blastBlocks(blastBlock);
         this._gameScore.addScore(blastBlock.length*score);
         this._timeProgress.changeTimeSpeed(RulesManager.i().getTimeSpeedChange(blastBlock.length));

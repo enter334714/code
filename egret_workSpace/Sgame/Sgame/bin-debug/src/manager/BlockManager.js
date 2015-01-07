@@ -49,6 +49,7 @@ var BlockManager = (function () {
         var block = this.getNewBlock();
         this._blocks[index] = block;
         var pos = this.getPosByIndex(index);
+        //   console.log(pos.x,pos.y);
         block.x = pos.x;
         block.y = pos.y;
         this._container.addChild(block);
@@ -56,7 +57,6 @@ var BlockManager = (function () {
     };
     BlockManager.prototype.fillBlocks = function () {
         var leng = this._blocks.length;
-        console.log("blocklength:", leng);
         for (var i = 0; i < leng; i++) {
             this.addBlockAt(i);
         }
@@ -177,7 +177,7 @@ var BlockManager = (function () {
         }
         if (arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        console.log("arr:" + arr + "total" + totalArr);
+        //  console.log("arr:"+arr+"total"+totalArr);
         arr = [];
         tempIndex = GameSettings.COLUMN;
         while (this._blocks[index + tempIndex] && this._blocks[index].type == this._blocks[index + tempIndex].type && (index + tempIndex) < this._blocks.length) {
@@ -191,7 +191,7 @@ var BlockManager = (function () {
         }
         if (arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        console.log("arr:" + arr + "total" + totalArr);
+        //  console.log("arr:"+arr+"total"+totalArr);
         if (totalArr.length >= 2)
             totalArr.unshift(index);
         else
@@ -207,7 +207,7 @@ var BlockManager = (function () {
         }
         if (arr.length)
             this.blastBlocks(arr);
-        console.log("Clear=======" + arr);
+        // console.log("Clear======="+arr);
     };
     return BlockManager;
 })();

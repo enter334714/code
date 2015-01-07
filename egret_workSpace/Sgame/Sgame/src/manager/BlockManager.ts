@@ -72,6 +72,7 @@ class BlockManager {
         var block:Block = this.getNewBlock();
         this._blocks[index] = block;
         var pos:egret.Point = this.getPosByIndex(index);
+     //   console.log(pos.x,pos.y);
         block.x = pos.x;
         block.y = pos.y;
         this._container.addChild(block);
@@ -81,7 +82,7 @@ class BlockManager {
     public fillBlocks():void
     {
         var leng:number = this._blocks.length;
-        console.log("blocklength:",leng)
+       // console.log("blocklength:",leng)
         for(var i:number = 0; i < leng; i++)
         {
             this.addBlockAt(i);
@@ -241,7 +242,7 @@ class BlockManager {
         }
         if(arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        console.log("arr:"+arr+"total"+totalArr);
+      //  console.log("arr:"+arr+"total"+totalArr);
         arr = [];
         tempIndex = GameSettings.COLUMN;
         //检查下方
@@ -259,7 +260,7 @@ class BlockManager {
         }
         if(arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        console.log("arr:"+arr+"total"+totalArr);
+      //  console.log("arr:"+arr+"total"+totalArr);
         if(totalArr.length >= 2)
             totalArr.unshift(index);
         else
@@ -278,6 +279,6 @@ class BlockManager {
         }
         if(arr.length)
             this.blastBlocks(arr);
-        console.log("Clear======="+arr);
+       // console.log("Clear======="+arr);
     }
 }

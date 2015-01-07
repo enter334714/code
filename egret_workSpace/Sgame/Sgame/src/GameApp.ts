@@ -105,16 +105,14 @@ class GameApp extends egret.DisplayObjectContainer
     }
 
     //游戏结束
-    private gameOver(e:GameEvent):void
-    {
+    private gameOver(e:GameEvent):void {
         this.clearView();
         this.addChild(this._share);
         this._share.showResult();
     }
 
     //游戏开始
-    private gameStart(e:GameEvent):void
-    {
+    private gameStart(e:GameEvent):void {
         GameSettings.TYPE = e.eventBody;
         AchieveManager.i().start();
         this.clearView();
