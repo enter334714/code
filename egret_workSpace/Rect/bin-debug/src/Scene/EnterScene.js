@@ -22,7 +22,8 @@ var EnterScene = (function (_super) {
         var i = 0;
         for (; i < 4; i++) {
             block = rect.Rect.produceRect("block" + (i + 1));
-            block.scale9Grid = new egret.Rectangle(9, 9, 1, 1);
+            block.fillMode = egret.BitmapFillMode.SCALE;
+            //  block.scale9Grid = new egret.Rectangle(9,9,1,1);
             this.addChild(block);
             this.blocks.push(block);
         }

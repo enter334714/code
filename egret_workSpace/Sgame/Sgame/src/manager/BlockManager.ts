@@ -48,6 +48,7 @@ class BlockManager {
         {
             this.destroyBlock(this._blocks.shift());
         }
+
         this._blocks = new Array(GameSettings.ROW * GameSettings.COLUMN);
     }
 
@@ -72,7 +73,6 @@ class BlockManager {
         var block:Block = this.getNewBlock();
         this._blocks[index] = block;
         var pos:egret.Point = this.getPosByIndex(index);
-     //   console.log(pos.x,pos.y);
         block.x = pos.x;
         block.y = pos.y;
         this._container.addChild(block);
@@ -82,7 +82,6 @@ class BlockManager {
     public fillBlocks():void
     {
         var leng:number = this._blocks.length;
-       // console.log("blocklength:",leng)
         for(var i:number = 0; i < leng; i++)
         {
             this.addBlockAt(i);
@@ -91,6 +90,7 @@ class BlockManager {
 
     public fillBlastedBlocks():void
     {
+
         while(this._clearedBlockIndex.length)
         {
             this.addBlockAt(this._clearedBlockIndex.shift());
@@ -121,7 +121,7 @@ class BlockManager {
             this.blastBlock(indexes[i]);
         }
         this.dropBlocks(RulesManager.i().getDropIndex(indexes), indexes);
-        this.fillBlastedBlocks();
+       this.fillBlastedBlocks();
         if(GameSettings.TYPE == GameConfig.TYPE_3CLEAR)
             this.check3Clear();
     }
@@ -137,6 +137,7 @@ class BlockManager {
             this._blocks[dropArr[i].to] = this._blocks[dropArr[i].from];
             this._blocks[dropArr[i].from] = null;
             this._clearedBlockIndex.push(dropArr[i].from);//获得空白的格子
+            console.log("block:",dropArr[i].to)
             toArr.push(dropArr[i].to);//获得空白的格子
             this._blocks[dropArr[i].to].resetProperty();
             egret.Tween.removeTweens(this._blocks[dropArr[i].to]);
@@ -144,6 +145,8 @@ class BlockManager {
         }
         this._clearedBlockIndex = this._clearedBlockIndex.concat(blastBlocks);//获得空白的格子
         //获得空白的格子
+       // return;
+        console.log("toArr:",toArr,"boomRect:",blastBlocks);
         while(toArr.length)
         {
             this._clearedBlockIndex.splice(this._clearedBlockIndex.indexOf(toArr.shift()), 1);
@@ -155,6 +158,7 @@ class BlockManager {
         var arr:any[] = [];
         for(var from in drop)
         {
+
             arr.push({"from":parseInt(from), "to":parseInt(drop[from])});
         }
         return arr.sort(this.sortDrop);
@@ -242,7 +246,7 @@ class BlockManager {
         }
         if(arr.length >= 2)
             totalArr = totalArr.concat(arr);
-      //  console.log("arr:"+arr+"total"+totalArr);
+        console.log("arr:"+arr+"total"+totalArr);
         arr = [];
         tempIndex = GameSettings.COLUMN;
         //检查下方
@@ -260,7 +264,7 @@ class BlockManager {
         }
         if(arr.length >= 2)
             totalArr = totalArr.concat(arr);
-      //  console.log("arr:"+arr+"total"+totalArr);
+        console.log("arr:"+arr+"total"+totalArr);
         if(totalArr.length >= 2)
             totalArr.unshift(index);
         else
@@ -279,6 +283,6 @@ class BlockManager {
         }
         if(arr.length)
             this.blastBlocks(arr);
-       // console.log("Clear======="+arr);
+        console.log("Clear======="+arr);
     }
 }

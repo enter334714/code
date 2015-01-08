@@ -23,8 +23,10 @@ class GameWorld extends egret.Sprite
 
     private  initBg():void
     {
+
         var bg:egret.Bitmap = new egret.Bitmap(RES.getRes("bg"))
         this.addChild(bg);
+        console.log("bg");
     }
     private  enterScene:EnterScene;
     private  numContainer:NumContainer;
@@ -32,43 +34,56 @@ class GameWorld extends egret.Sprite
     public init():void
     {
 
-       // GameWorld.imgs = RES.getRes("imgs");
         this.enterScene = new EnterScene();
         this.addChild(this.enterScene);
 
+        this.enterScene.play();
+        this.enterScene.startTimer();
         this.enterScene.addEventListener("startGame1",this.startGame1,this);
         this.enterScene.addEventListener("startGame2",this.startGame2,this);
         this.gameScene = new GameScene();
-        this.gameScene.visible = false;
-
-
         this.gameScene.addEventListener("returnSence",this.onReturn,this)
-        this.addChild(this.gameScene);
+     //   this.gameScene.init();
+     //   this.gameScene.visible = false;
+
+
+
+      //  this.addChild(this.gameScene);
        // this.numContainer = new NumContainer();
         //this.addChild(this.numContainer);
        // this.numContainer.num = 13435465;
 
     }
 
-    private startGame2(e:egret.Event):void
-    {
-        this.enterScene.visible = false;
-        this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame2")
-    }
     private startGame1(e:egret.Event):void
     {
-        //console.log("startGame1_j");
-        this.enterScene.visible = false;
-        this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame1")
+        this.startGame(0)
+
+    }
+    private startGame2(e:egret.Event):void
+    {
+        this.startGame(1);
+    }
+
+    private startGame(gameType:number):void
+    {
+        if(this.contains(this.enterScene))
+        {
+            this.removeChild(this.enterScene);
+            this.enterScene.stopTimer();
+        }
+        this.addChild(this.gameScene);
+        this.gameScene.startGame(gameType);
+        this.gameScene.dispatchEventWith("startGame"+gameType);
     }
 
     private onReturn(e:egret.Event):void
     {
         console.log("returnScene_j");
-        this.enterScene.visible = true;
-        this.gameScene.visible = false
-        this.enterScene.visible = true;
+        if(this.contains(this.gameScene))
+            this.removeChild(this.gameScene);
+        this.addChild(this.enterScene);
+        this.enterScene.startTimer();
+        this.enterScene.play();
     }
 }

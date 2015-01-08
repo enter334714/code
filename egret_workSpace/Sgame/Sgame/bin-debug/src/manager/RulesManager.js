@@ -93,7 +93,7 @@ var RulesManager = (function () {
             tempIndex = indexes[i] - GameSettings.COLUMN;
             while (tempIndex >= 0) {
                 if (indexes.indexOf(tempIndex) == -1 && BlockManager.i().getBlockByIndex(tempIndex)) {
-                    console.log("moveBlock:", tempIndex);
+                    //console.log("moveBlock:",tempIndex);
                     if (moveBlock[tempIndex])
                         moveBlock[tempIndex] += GameSettings.COLUMN;
                     else
@@ -102,6 +102,7 @@ var RulesManager = (function () {
                 tempIndex -= GameSettings.COLUMN;
             }
         }
+        console.log("moveBlock:", moveBlock);
         return moveBlock;
     };
     RulesManager.prototype.getTimeSpeedChange = function (blockCount) {

@@ -38,8 +38,7 @@ class TextureDemo extends egret.DisplayObjectContainer
     private loadIndex:number=0;
     private onConfigComp(e:RES.ResourceEvent):void
     {
-        RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onConfigComp,this);
-        RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
+
         if(e.groupName=="assets"  ||  e.groupName=="shareGroup")
         {
             this.loadIndex++;
@@ -47,6 +46,8 @@ class TextureDemo extends egret.DisplayObjectContainer
         console.log(this.loadIndex);
         if(this.loadIndex==2)
         {
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onConfigComp,this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
             this.gameWorld = new GameWorld();
             this.gameWorld.init();
             this.addChild(this.gameWorld);

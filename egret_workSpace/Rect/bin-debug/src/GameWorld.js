@@ -24,37 +24,46 @@ var GameWorld = (function (_super) {
     GameWorld.prototype.initBg = function () {
         var bg = new egret.Bitmap(RES.getRes("bg"));
         this.addChild(bg);
+        console.log("bg");
     };
     GameWorld.prototype.init = function () {
-        // GameWorld.imgs = RES.getRes("imgs");
         this.enterScene = new EnterScene();
         this.addChild(this.enterScene);
+        this.enterScene.play();
+        this.enterScene.startTimer();
         this.enterScene.addEventListener("startGame1", this.startGame1, this);
         this.enterScene.addEventListener("startGame2", this.startGame2, this);
         this.gameScene = new GameScene();
-        this.gameScene.visible = false;
         this.gameScene.addEventListener("returnSence", this.onReturn, this);
-        this.addChild(this.gameScene);
+        //   this.gameScene.init();
+        //   this.gameScene.visible = false;
+        //  this.addChild(this.gameScene);
         // this.numContainer = new NumContainer();
         //this.addChild(this.numContainer);
         // this.numContainer.num = 13435465;
     };
-    GameWorld.prototype.startGame2 = function (e) {
-        this.enterScene.visible = false;
-        this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame2");
-    };
     GameWorld.prototype.startGame1 = function (e) {
-        //console.log("startGame1_j");
-        this.enterScene.visible = false;
-        this.gameScene.visible = true;
-        this.gameScene.dispatchEventWith("startGame1");
+        this.startGame(0);
+    };
+    GameWorld.prototype.startGame2 = function (e) {
+        this.startGame(1);
+    };
+    GameWorld.prototype.startGame = function (gameType) {
+        if (this.contains(this.enterScene)) {
+            this.removeChild(this.enterScene);
+            this.enterScene.stopTimer();
+        }
+        this.addChild(this.gameScene);
+        this.gameScene.startGame(gameType);
+        this.gameScene.dispatchEventWith("startGame" + gameType);
     };
     GameWorld.prototype.onReturn = function (e) {
         console.log("returnScene_j");
-        this.enterScene.visible = true;
-        this.gameScene.visible = false;
-        this.enterScene.visible = true;
+        if (this.contains(this.gameScene))
+            this.removeChild(this.gameScene);
+        this.addChild(this.enterScene);
+        this.enterScene.startTimer();
+        this.enterScene.play();
     };
     return GameWorld;
 })(egret.Sprite);

@@ -43,11 +43,12 @@ class RulesManager
         var blockChecked:number[] = [index];
         while(needCheck.length > 0)
         {
+
             indexTemp = needCheck.shift();
             //console.log("indexTemp:",indexTemp);
             if(blockChecked.indexOf(indexTemp) >= 0)
                 continue;
-            if(BlockManager.i().getBlockByIndex(indexTemp).type == type)
+                if(BlockManager.i().getBlockByIndex(indexTemp).type == type)
             {
                 arr.push(indexTemp);
                 needCheck = needCheck.concat(this.getAroundIndex(indexTemp));
@@ -123,7 +124,7 @@ class RulesManager
             {
                 if(indexes.indexOf(tempIndex) == -1 && BlockManager.i().getBlockByIndex(tempIndex))
                 {
-                    console.log("moveBlock:",tempIndex);
+                    //console.log("moveBlock:",tempIndex);
                     if(moveBlock[tempIndex])
                         moveBlock[tempIndex] += GameSettings.COLUMN;
                     else
@@ -131,8 +132,9 @@ class RulesManager
                 }
                 tempIndex -= GameSettings.COLUMN;
             }
-        }
 
+        }
+        console.log("moveBlock:",moveBlock);
         return moveBlock;
     }
 

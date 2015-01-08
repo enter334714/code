@@ -18,8 +18,8 @@ var TextureDemo = (function (_super) {
     }
     TextureDemo.prototype.onAddedHandler = function (e) {
         this.load();
-        this.touchEnabled = true;
-        this.touchChildren = true;
+        // this.touchEnabled = true;
+        //this.touchChildren = true;
         //  this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouch,this)
     };
     TextureDemo.prototype.load = function () {
@@ -40,6 +40,8 @@ var TextureDemo = (function (_super) {
         }
         console.log(this.loadIndex);
         if (this.loadIndex == 2) {
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onConfigComp, this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
             this.gameWorld = new GameWorld();
             this.gameWorld.init();
             this.addChild(this.gameWorld);

@@ -20,7 +20,8 @@ class EnterScene extends egret.Sprite
         for(;i<4;i++)
         {
             block = rect.Rect.produceRect("block"+(i+1));
-            block.scale9Grid = new egret.Rectangle(9,9,1,1);
+            block.fillMode =egret.BitmapFillMode.SCALE;
+          //  block.scale9Grid = new egret.Rectangle(9,9,1,1);
             this.addChild(block);
             this.blocks.push(block);
         }
@@ -28,7 +29,7 @@ class EnterScene extends egret.Sprite
         this.timer = new egret.Timer(1000,0);
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.playAnimation,this);
         this.timer.stop();
-        this.play();
+       // this.play();
 
         var logo:egret.Bitmap = new egret.Bitmap(RES.getRes("logo"));
         logo.x = 120;
@@ -90,6 +91,12 @@ class EnterScene extends egret.Sprite
         this.timer.reset();
         this.timer.start();
     }
+    public stopTimer():void
+    {
+        this.timer.stop();
+    }
+
+
     private targetIndex:number=-1;
     private playAnimation():void
     {
@@ -105,20 +112,6 @@ class EnterScene extends egret.Sprite
         egret.Tween.get(block).to({scaleX:scaX*1.2,scaleY:1.2*scaY},500,egret.Ease.backIn).to({scaleX:scaX,scaleY:scaY},500,egret.Ease.backOut)
     }
 
-    public _setVisible(value:boolean):void
-    {
-        if(this.visible==value)
-            return;
-        super._setVisible(value)
-        if(value==false)
-        {
-            this.timer.stop();
-            //////////////this.timer.start();
-        }
-        else
-        {
-            this.startTimer();
-            this.play();
-        }
-    }
+   // public startPlay():void
+
 }

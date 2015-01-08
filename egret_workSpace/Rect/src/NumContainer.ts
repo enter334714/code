@@ -20,7 +20,6 @@ class NumContainer extends egret.DisplayObjectContainer
         var numLen:number = numStr.length;
         var index:number = numLen-this.numChildren; //正数为多余,要删除index个；负数为缺少，要增加index个；
         var i:number=0;
-        console.log("index:",index);
         for(i=0;i<Math.abs(index);i++)
         {
             if(index<0)

@@ -14,6 +14,8 @@ var rect;
         __extends(Rect, _super);
         function Rect(texture) {
             _super.call(this, texture);
+            //this.anchorOffsetX = GameConfig.BLOCK_WIDTH/2;
+            //this.
         }
         Rect.produceRect = function (textureName) {
             if (rect.Rect.cacheRect[textureName] == null)
@@ -37,6 +39,31 @@ var rect;
             if (dict.indexOf(re) == -1) {
                 dict.push(re);
             }
+        };
+        Rect.prototype.boom = function () {
+            egret.Tween.removeTweens(this);
+            var targetX = this.x - 8;
+            var targetY = this.y - 8;
+            egret.Tween.get(this).to({ scaleX: 1.2, scaleY: 1.2, alpha: 0, x: targetX, y: targetY }, 300).call(function () {
+                this.parent.removeChild(this);
+                rect.Rect.reclaim(this, this.textureName);
+            }, this);
+        };
+        Rect.prototype.resetProperty = function () {
+            this.scaleX = 1;
+            this.scaleY = 1;
+            this.alpha = 1;
+        };
+        Rect.prototype.playFadeInAnimation = function () {
+            egret.Tween.removeTweens(this);
+            var targetX = this.x;
+            var targetY = this.y;
+            this.alpha = 0;
+            this.scaleX = 0;
+            this.scaleY = 0;
+            this.x = this.x + GameConfig.BLOCK_WIDTH / 2;
+            this.y = this.y + GameConfig.BLOCK_WIDTH / 2;
+            egret.Tween.get(this).to({ scaleX: 1, scaleY: 1, alpha: 1, x: targetX, y: targetY }, 300);
         };
         Rect.cacheRect = {};
         return Rect;

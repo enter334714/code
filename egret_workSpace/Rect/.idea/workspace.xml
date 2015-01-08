@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/GameScene.ts" line="32" />
+    <bookmark url="file://$PROJECT_DIR$/src/scene/GameScene.ts" line="34" />
+    <bookmark url="file://$PROJECT_DIR$/src/scene/GameScene.ts" line="78" />
+    <bookmark url="file://$PROJECT_DIR$/src/manager/RectManager.ts" line="226" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b816d8c-d442-45b3-83c7-562fe78c81f0" name="Default" comment="" />
@@ -30,28 +32,18 @@
       <file leaf-file-name="Rect.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/rect/Rect.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7037037" vertical-offset="0" max-vertical-offset="969">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.6752137" vertical-offset="856" max-vertical-offset="1558">
+              <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GameScene.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameScene.ts">
+        <entry file="file://$PROJECT_DIR$/src/scene/GameScene.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="13.44" vertical-offset="5998" max-vertical-offset="7049">
-              <caret line="298" column="9" selection-start-line="298" selection-start-column="9" selection-end-line="298" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadingUI.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1045">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-12.12" vertical-offset="1255" max-vertical-offset="2527">
+              <caret line="82" column="17" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -60,45 +52,52 @@
       <file leaf-file-name="core.d.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/core/core.d.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.16" vertical-offset="26029" max-vertical-offset="138719">
-              <caret line="1382" column="8" selection-start-line="1382" selection-start-column="8" selection-end-line="1382" selection-end-column="8" />
+            <state vertical-scroll-proportion="-242.08" vertical-offset="53095" max-vertical-offset="138719">
+              <caret line="3113" column="8" selection-start-line="3113" selection-start-column="8" selection-end-line="3113" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lib.d.ts" pinned="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/lib.d.ts">
+      <file leaf-file-name="RectManager.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/manager/RectManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="19123" max-vertical-offset="269743">
-              <caret line="1032" column="31" selection-start-line="1032" selection-start-column="31" selection-end-line="1032" selection-end-column="31" />
+            <state vertical-scroll-proportion="-12.1" vertical-offset="1409" max-vertical-offset="4636">
+              <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+              <folding>
+                <element signature="n#!!doc;n#RectManager#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NumManager.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NumManager.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.2" vertical-offset="0" max-vertical-offset="950">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imgs.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resource/assets/imgs.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="GameConfig.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/GameConfig.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.56" vertical-offset="0" max-vertical-offset="304">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+              <folding>
+                <element signature="n#!!doc;n#GameConfig#0" expanded="false" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="NumContainer.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NumContainer.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.84" vertical-offset="248" max-vertical-offset="1691">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextureDemo.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TextureDemo.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.24" vertical-offset="171" max-vertical-offset="1349">
-              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+            <state vertical-scroll-proportion="-4.52" vertical-offset="457" max-vertical-offset="1672">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -107,18 +106,18 @@
       <file leaf-file-name="GameWorld.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameWorld.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="741" max-vertical-offset="1501">
-              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state vertical-scroll-proportion="-7.46" vertical-offset="1109" max-vertical-offset="1786">
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="EnterScene.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EnterScene.ts">
+        <entry file="file://$PROJECT_DIR$/src/scene/EnterScene.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.24" vertical-offset="1578" max-vertical-offset="2451">
-              <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+            <state vertical-scroll-proportion="29.64" vertical-offset="1368" max-vertical-offset="2318">
+              <caret line="33" column="28" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -132,12 +131,17 @@
         <option value="$PROJECT_DIR$/resource/resource.json" />
         <option value="$PROJECT_DIR$/egretProperties.json" />
         <option value="$PROJECT_DIR$/launcher/index.html" />
+        <option value="$PROJECT_DIR$/src/config/GameSetting.ts" />
         <option value="$PROJECT_DIR$/src/EnterScene.ts" />
-        <option value="$PROJECT_DIR$/src/GameWorld.ts" />
-        <option value="$PROJECT_DIR$/src/rect/Rect.ts" />
-        <option value="$PROJECT_DIR$/src/NumContainer.ts" />
         <option value="$PROJECT_DIR$/src/GameScene.ts" />
         <option value="$PROJECT_DIR$/src/TextureDemo.ts" />
+        <option value="$PROJECT_DIR$/src/scene/EnterScene.ts" />
+        <option value="$PROJECT_DIR$/src/NumContainer.ts" />
+        <option value="$PROJECT_DIR$/src/GameWorld.ts" />
+        <option value="$PROJECT_DIR$/src/config/GameConfig.ts" />
+        <option value="$PROJECT_DIR$/src/rect/Rect.ts" />
+        <option value="$PROJECT_DIR$/src/manager/RectManager.ts" />
+        <option value="$PROJECT_DIR$/src/scene/GameScene.ts" />
       </list>
     </option>
   </component>
@@ -219,7 +223,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,11 +351,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sgame" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="addrectat&#9;null&#9;null&#10;addre&#9;null&#9;null&#10;getBloc&#9;null&#9;null&#10;boo&#9;null&#9;null&#10;boom&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\myGit\code\egret_workSpace\Rect\src" />
       <recent name="E:\myGit\code\egret_workSpace\Rect\resource\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\myGit\code\egret_workSpace\Rect\src\Scene" />
     </key>
   </component>
   <component name="RunManager">
@@ -353,24 +415,44 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18309858" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.4997367" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24907847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18309858" sideWeight="0.5002633" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18309858" sideWeight="0.5007899" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -395,7 +477,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -408,15 +490,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssetAdapter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="665" max-vertical-offset="1425">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.ts">
+    <entry file="file://$PROJECT_DIR$/src/scene/GameScene.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4788">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -469,7 +543,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EnterScene.ts">
+    <entry file="file://$PROJECT_DIR$/src/scene/EnterScene.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2451">
           <caret line="61" column="42" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="42" />
@@ -493,15 +567,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssetAdapter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="665" max-vertical-offset="1425">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.ts">
+    <entry file="file://$PROJECT_DIR$/src/scene/GameScene.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3515">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -538,7 +604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EnterScene.ts">
+    <entry file="file://$PROJECT_DIR$/src/scene/EnterScene.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="2451">
           <caret line="61" column="42" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="42" />
@@ -581,46 +647,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameWorld.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="741" max-vertical-offset="1501">
-          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/launcher/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32618025" vertical-offset="228" max-vertical-offset="1311">
-          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/lib.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19123" max-vertical-offset="269743">
-          <caret line="1032" column="31" selection-start-line="1032" selection-start-column="31" selection-end-line="1032" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssetAdapter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2977208" vertical-offset="285" max-vertical-offset="1425">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EnterScene.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.24" vertical-offset="1578" max-vertical-offset="2451">
-          <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/core/egret/context/html5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2905983" vertical-offset="594" max-vertical-offset="10127">
@@ -629,50 +655,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/core/core.d.ts">
+    <entry file="file://$PROJECT_DIR$/src/TextureDemo.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.16" vertical-offset="26029" max-vertical-offset="138719">
-          <caret line="1382" column="8" selection-start-line="1382" selection-start-column="8" selection-end-line="1382" selection-end-column="8" />
+        <state vertical-scroll-proportion="-8.32" vertical-offset="647" max-vertical-offset="1368">
+          <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.ts">
+    <entry file="file://$PROJECT_DIR$/src/config/GameSetting.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="13.44" vertical-offset="5998" max-vertical-offset="7049">
-          <caret line="298" column="9" selection-start-line="298" selection-start-column="9" selection-end-line="298" selection-end-column="9" />
-          <folding />
+        <state vertical-scroll-proportion="-3.8" vertical-offset="0" max-vertical-offset="228">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc;n#GameSetting#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts">
+    <entry file="file://$PROJECT_DIR$/src/ImgNumManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1045">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2508">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NumManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.2" vertical-offset="0" max-vertical-offset="950">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NumContainer.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.84" vertical-offset="248" max-vertical-offset="1691">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state vertical-scroll-proportion="-4.52" vertical-offset="457" max-vertical-offset="1672">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TextureDemo.ts">
+    <entry file="file://$PROJECT_DIR$/bin-debug/src/Scene/GameScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.24" vertical-offset="171" max-vertical-offset="1349">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.33277026" vertical-offset="1057" max-vertical-offset="1748">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/GameConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.56" vertical-offset="0" max-vertical-offset="304">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc;n#GameConfig#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/core/core.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-242.08" vertical-offset="53095" max-vertical-offset="138719">
+          <caret line="3113" column="8" selection-start-line="3113" selection-start-column="8" selection-end-line="3113" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/lib.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="19054" max-vertical-offset="269743">
+          <caret line="1026" column="4" selection-start-line="1026" selection-start-column="4" selection-end-line="1026" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launcher/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32618025" vertical-offset="228" max-vertical-offset="1311">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding>
+            <marker date="1420719418991" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1420719418991" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin-debug/src/manager/RectManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.123796426" vertical-offset="100" max-vertical-offset="3363">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/EnterScene.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="29.64" vertical-offset="1368" max-vertical-offset="2318">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameWorld.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.46" vertical-offset="1109" max-vertical-offset="1786">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manager/RectManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.1" vertical-offset="1409" max-vertical-offset="4636">
+          <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc;n#RectManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/GameScene.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.12" vertical-offset="1255" max-vertical-offset="2527">
+          <caret line="82" column="17" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rect/Rect.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7037037" vertical-offset="0" max-vertical-offset="969">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.6752137" vertical-offset="856" max-vertical-offset="1558">
+          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
           <folding />
         </state>
       </provider>

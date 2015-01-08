@@ -1,8 +1,11 @@
 var game_file_list = [
-    "NumContainer.js",
+    "config/GameConfig.js",
+    "config/GameSetting.js",
     "rect/Rect.js",
-    "EnterScene.js",
-    "GameScene.js",
+    "NumContainer.js",
+    "manager/RectManager.js",
+    "scene/EnterScene.js",
+    "scene/GameScene.js",
     "GameWorld.js",
     "TextureDemo.js"
 ];

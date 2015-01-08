@@ -24,7 +24,6 @@ var NumContainer = (function (_super) {
             var numLen = numStr.length;
             var index = numLen - this.numChildren; //正数为多余,要删除index个；负数为缺少，要增加index个；
             var i = 0;
-            console.log("index:", index);
             for (i = 0; i < Math.abs(index); i++) {
                 if (index < 0) {
                     var bmp = this.removeChildAt(i);

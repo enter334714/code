@@ -49,7 +49,6 @@ var BlockManager = (function () {
         var block = this.getNewBlock();
         this._blocks[index] = block;
         var pos = this.getPosByIndex(index);
-        //   console.log(pos.x,pos.y);
         block.x = pos.x;
         block.y = pos.y;
         this._container.addChild(block);
@@ -95,12 +94,16 @@ var BlockManager = (function () {
             this._blocks[dropArr[i].to] = this._blocks[dropArr[i].from];
             this._blocks[dropArr[i].from] = null;
             this._clearedBlockIndex.push(dropArr[i].from); //获得空白的格子
+            console.log("block:", dropArr[i].to);
             toArr.push(dropArr[i].to); //获得空白的格子
             this._blocks[dropArr[i].to].resetProperty();
             egret.Tween.removeTweens(this._blocks[dropArr[i].to]);
             egret.Tween.get(this._blocks[dropArr[i].to]).to({ x: posi.x, y: posi.y }, 150);
         }
         this._clearedBlockIndex = this._clearedBlockIndex.concat(blastBlocks); //获得空白的格子
+        //获得空白的格子
+        // return;
+        console.log("toArr:", toArr, "boomRect:", blastBlocks);
         while (toArr.length) {
             this._clearedBlockIndex.splice(this._clearedBlockIndex.indexOf(toArr.shift()), 1);
         }
@@ -177,7 +180,7 @@ var BlockManager = (function () {
         }
         if (arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        //  console.log("arr:"+arr+"total"+totalArr);
+        console.log("arr:" + arr + "total" + totalArr);
         arr = [];
         tempIndex = GameSettings.COLUMN;
         while (this._blocks[index + tempIndex] && this._blocks[index].type == this._blocks[index + tempIndex].type && (index + tempIndex) < this._blocks.length) {
@@ -191,7 +194,7 @@ var BlockManager = (function () {
         }
         if (arr.length >= 2)
             totalArr = totalArr.concat(arr);
-        //  console.log("arr:"+arr+"total"+totalArr);
+        console.log("arr:" + arr + "total" + totalArr);
         if (totalArr.length >= 2)
             totalArr.unshift(index);
         else
@@ -207,7 +210,7 @@ var BlockManager = (function () {
         }
         if (arr.length)
             this.blastBlocks(arr);
-        // console.log("Clear======="+arr);
+        console.log("Clear=======" + arr);
     };
     return BlockManager;
 })();
